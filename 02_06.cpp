@@ -14,10 +14,28 @@ struct JobStruct {
 	int workerId;
 }sJob;
 
+class Node {
+public:
+	int data;
+	Node* next;
+};
+
 int main() {
 
 	cout << sizeof(uJob) << '\n';
 	cout << sizeof(sJob) << '\n';
+
+	Node a, b, c;
+	a.data = 1;
+	a.next = &b;
+	b.data = 2;
+	b.next = &c;
+	c.data = 3;
+	c.next = NULL;
+
+	cout << a.data << " " << b.data << " " << c.data << '\n';
+	cout << a.next->data << a.next->next->data << '\n';
+
 
 	return 0;
 }
@@ -49,3 +67,4 @@ int main() {
 //
 //	return 0;
 //}
+
