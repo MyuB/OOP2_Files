@@ -3,6 +3,7 @@ using namespace std;
 
 class Complex {
 	friend Complex operator+(const Complex& left, const Complex& right);
+	friend istream& operator>>(istream& o, Complex& right);
 private:
 	int real;
 	int imaginary;
@@ -14,8 +15,6 @@ public:
 	int Imaginary() const {
 		return this->imaginary;
 	}
-	void setReal(int r) { this->real = r; }
-	void setImaginary(int i) { this->imaginary = i;}
 };
 //friend 사용해서 private 값에 접근 가능하다
 Complex operator+(const Complex& left, const Complex& right) {
@@ -28,15 +27,13 @@ ostream& operator << (ostream& o, const Complex& right) {
 	return o;
 }
 istream& operator >> (istream& o, Complex& right) {
-	cout << "real: ";
-	int r; cin >> r; right.setReal(r);
-	cout << "imaginary: ";
-	int i; cin >> i; right.setImaginary(i);
-
+	cout << "실수부: "; o >> right.real;
+	cout << "허수부: "; o >> right.imaginary;
 	return o;
 }
 
 int main() {
+
 	Complex c1(0, 0);
 
 	cin >> c1;
